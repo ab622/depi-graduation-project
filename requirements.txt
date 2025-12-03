@@ -5,3 +5,9 @@ beautifulsoup4>=4.13.4
 requests>=2.32.4
 trafilatura>=2.0.0
 pydantic>=2.11.7
+beautifulsoup4
+fastapi
+pydantic
+requests
+trafilatura
+uvicorn
