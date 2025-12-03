@@ -1,3 +1,4 @@
 window.APP_CONFIG = {
-    BACKEND_API_URL: window.BACKEND_API_URL || 'http://localhost:8000'
+    // استبدل هذا الرابط برابط Backend الحقيقي بعد الرفع
+    BACKEND_API_URL: window.BACKEND_API_URL || 'https://your-backend-url.com'
 };
