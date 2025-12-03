@@ -1,5 +1,5 @@
 
 window.APP_CONFIG = {
-    // استبدل هذا الرابط برابط Backend الحقيقي بعد الرفع
-    BACKEND_API_URL: window.BACKEND_API_URL || 'https://your-backend-url.com'
+    // رابط Backend في Production
+    BACKEND_API_URL: window.BACKEND_API_URL || 'https://my-backend.replit.app'
 };
