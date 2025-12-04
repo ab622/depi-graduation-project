@@ -329,13 +329,24 @@ async def health_check():
     return {
         "status": "healthy",
         "service": "web-scraping-api",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "timestamp": datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
     }
 
 @app.post("/scrape-single", response_model=ScrapedPage, tags=["Web Scraping"])
 async def scrape_single_page(
-    url: str = Query(..., description="The URL of the specific page to scrape", example="https://example.com/article"),
-    timeout: int = Query(10, description="Request timeout in seconds for the page", ge=1, le=60, example=10)
+    url: str = Query(
+        ..., 
+        description="The URL of the specific page to scrape", 
+        examples={"example": {"summary": "Article URL", "value": "https://example.com/article"}}
+    ),
+    timeout: int = Query(
+        10, 
+        description="Request timeout in seconds for the page", 
+        ge=1, 
+        le=60, 
+        examples={"default": {"summary": "Timeout in seconds", "value": 10}}
+    )
 ):
     try:
         parsed_url = urlparse(url)
@@ -365,8 +376,18 @@ async def scrape_single_page(
 
 @app.post("/scrape-all", response_model=List[ScrapedPage], tags=["Web Scraping"])
 async def scrape_all_pages(
-    url: str = Query(..., description="The base URL of the website to scrape completely", example="https://example.com"),
-    timeout: int = Query(10, description="Request timeout in seconds for each page", ge=1, le=60, example=10)
+    url: str = Query(
+        ..., 
+        description="The base URL of the website to scrape completely", 
+        examples={"example": {"summary": "Base site URL", "value": "https://example.com"}}
+    ),
+    timeout: int = Query(
+        10, 
+        description="Request timeout in seconds for each page", 
+        ge=1, 
+        le=60, 
+        examples={"default": {"summary": "Timeout in seconds", "value": 10}}
+    )
 ):
     try:
         parsed_url = urlparse(url)
@@ -400,9 +421,25 @@ async def scrape_all_pages(
 
 @app.post("/scrape-pages", response_model=List[ScrapedPage], tags=["Web Scraping"])
 async def scrape_website(
-    url: str = Query(..., description="The base URL of the website to scrape", example="https://example.com"),
-    max_pages: int = Query(100, description="Maximum number of pages to scrape", ge=1, le=999999, example=50),
-    timeout: int = Query(10, description="Request timeout in seconds for each page", ge=1, le=60, example=10)
+    url: str = Query(
+        ..., 
+        description="The base URL of the website to scrape", 
+        examples={"example": {"summary": "Base site URL", "value": "https://example.com"}}
+    ),
+    max_pages: int = Query(
+        100, 
+        description="Maximum number of pages to scrape", 
+        ge=1, 
+        le=999999, 
+        examples={"default": {"summary": "Max pages to crawl", "value": 50}}
+    ),
+    timeout: int = Query(
+        10, 
+        description="Request timeout in seconds for each page", 
+        ge=1, 
+        le=60, 
+        examples={"default": {"summary": "Timeout in seconds", "value": 10}}
+    )
 ):
     try:
         parsed_url = urlparse(url)
