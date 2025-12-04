@@ -62,11 +62,13 @@ class TestStreamEndpoints:
         })
         assert response.status_code in [200, 422, 400]
 
-    def test_unlimited_stream_endpoint_exists(self):
-        response = client.post("/scrape-stream-unlimited", json={
-            "url": "https://example.com"
-        })
-        assert response.status_code in [200, 422, 400]
+
+class TestAPIEndpoints:
+    def test_api_info_endpoint(self):
+        response = client.get("/api")
+        assert response.status_code == 200
+        data = response.json()
+        assert "endpoints" in data
 
 
 class TestAPIDocumentation:

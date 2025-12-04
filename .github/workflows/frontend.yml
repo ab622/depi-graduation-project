@@ -45,7 +45,7 @@ jobs:
         run: |
           test -f public/index.html
           test -f public/script.js
-          test -f public/style.css
+          test -f public/styles.css
           test -f public/config.js
           echo "All required files exist"
 
