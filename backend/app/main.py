@@ -355,7 +355,7 @@ async def scrape_single_page(
         if not page_data or not page_data.get('content'):
             raise HTTPException(status_code=404, detail="No content could be extracted from the provided URL")
         
-    return {"data": page_data}
+        return {"data": page_data}
     
     except HTTPException:
         raise
