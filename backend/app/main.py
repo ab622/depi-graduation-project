@@ -23,8 +23,8 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# أضف عناوين Frontend المسموح لها بالاتصال
-ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "https://my-frontend.replit.app").split(",")
+# أضف عناوين Frontend المسموح لها بالاتصال - عدّل هنا قبل البناء
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "https://YOUR-ACTUAL-FRONTEND-URL.com").split(",")
 IS_WILDCARD_ORIGINS = ALLOWED_ORIGINS == ["*"]
 
 app.add_middleware(
