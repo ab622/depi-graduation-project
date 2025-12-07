@@ -1,6 +1,6 @@
 class WebScrapingUI {
     constructor() {
-        this.apiBaseUrl = window.APP_CONFIG?.BACKEND_API_URL || window.location.origin;
+        this.apiBaseUrl = "http://backend-service:8000";
         this.currentRequest = null;
         this.results = [];
         this.eventSource = null;
