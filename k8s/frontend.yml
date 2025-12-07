@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend-container
-          image: <FRONTEND_ECR_URI>:latest   # <-- CI/CD هيبدله تلقائي
+          image: 343218178449.dkr.ecr.eu-west-1.amazonaws.com/frontend:latest   # <-- CI/CD هيبدله تلقائي
           ports:
             - containerPort: 80
           resources:
